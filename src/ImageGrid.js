@@ -12,6 +12,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import InfiniteScroll from "react-infinite-scroller";
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 import InfoPopOver from "./InfoPopOver";
 import imageArray from "./imagedata";
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   gridList: {
     flexWrap: "wrap",
     transform: "translateZ(0)",
-    width: "100%"
+    width: "100%",
   },
   title: {
     color: "white"
@@ -36,6 +37,13 @@ const useStyles = makeStyles(theme => ({
   titleBar: {
     background:
       "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
+  },
+  gridTile: {
+    height:"400px"
+  },
+  header: {
+    fontSize: "1.5rem",
+    color: "darkslategrey"
   }
 }));
 
@@ -106,7 +114,7 @@ export default function ImageGrid(props) {
     const tempArr = tileData
       .slice((page - 1) * ITEMS_PER_SCROLL, page * ITEMS_PER_SCROLL)
       .map((tile, index) => (
-        <GridListTile key={imageArr.length + index}>
+        <GridListTile key={imageArr.length + index} style={{ height: "350px" }}>
           <img
             src={tile.download_url}
             alt={tile.id}
@@ -179,7 +187,6 @@ export default function ImageGrid(props) {
       </Dialog>
       <Grid
         container
-        style={{ overflow: "scroll", height: 400 }}
         ref={ref => {
           setRef(ref);
         }}
@@ -194,7 +201,10 @@ export default function ImageGrid(props) {
           getScrollParent={() => ref}
           style={{ width: "100%" }}
         >
-          <GridList className={classes.gridList} cols={4} rows={3} spacing={10}>
+          <GridList className={classes.gridList} cols={3} rows={3} spacing={10}>
+          <GridListTile key="Subheader" cols={2} style={{ height: 'auto', width: '100%' }}>
+            <ListSubheader component="div" classes={{root: classes.header}}>{'Image Gallery'}</ListSubheader>
+          </GridListTile>
             {imageArr}
           </GridList>
         </InfiniteScroll>
@@ -208,7 +218,7 @@ export default function ImageGrid(props) {
     </div>
   ) : (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={1} rows={2}>
+      <GridList className={classes.gridList} cellHeight={'auto'} cols={1} rows={2}>
         <Typography style={{ textAlign: "center", alignSelf: "center" }}>
           {"No Data"}
         </Typography>
