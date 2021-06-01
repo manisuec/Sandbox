@@ -32,7 +32,9 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
   },
   title: {
-    color: "white"
+    color: "white",
+    fontStyle: 'italic',
+    fontSize: '0.9rem',
   },
   titleBar: {
     background:
@@ -44,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   header: {
     fontSize: "1.5rem",
     color: "darkslategrey"
-  }
+  },
 }));
 
 export default function ImageGrid(props) {
@@ -89,19 +91,17 @@ export default function ImageGrid(props) {
 
   const closeButtonStyles = {
     position: "absolute",
-    // top: '0%',
     left: "100%",
     transform: `translate(-100%, 0%)`,
     color: "white",
-    backgroundColor: "#0004"
+    backgroundColor: "#0004",
   };
   const saveButtonStyles = {
     position: "absolute",
-    // top: '0%',
     left: "100%",
     transform: `translate(-250%, 0%)`,
     color: "white",
-    backgroundColor: "#0004"
+    backgroundColor: "#0004",
   };
 
   const loader = (
@@ -117,18 +117,18 @@ export default function ImageGrid(props) {
         <GridListTile key={imageArr.length + index} style={{ height: "350px" }}>
           <img
             src={tile.download_url}
-            alt={tile.id}
+            alt={tile.author}
             onClick={imageClickHandler(tile)}
           />
           <GridListTileBar
-            title={tile.id}
+            title={`By: ${tile.author}`}
             classes={{
               root: classes.titleBar,
               title: classes.title
             }}
             actionIcon={
               <IconButton
-                aria-label={`star ${tile.id}`}
+                aria-label={`star ${tile.author}`}
                 onClick={handleClick(tile)}
               >
                 <InfoIcon className={classes.title} />
@@ -155,6 +155,7 @@ export default function ImageGrid(props) {
         maxWidth="lg"
         scroll={"body"}
         PaperComponent={"div"}
+        classes={{root: classes.dialog}}
       >
         <div>
           <IconButton
@@ -171,7 +172,7 @@ export default function ImageGrid(props) {
             rel={"noreferrer"}
           >
             <IconButton
-              aria-label="close"
+              aria-label="save"
               style={saveButtonStyles}
               size={"small"}
             >
@@ -181,7 +182,7 @@ export default function ImageGrid(props) {
           <img
             src={selectedImage.download_url}
             alt={selectedImage.id}
-            style={{ borderRadius: "10px" }}
+            style={{ borderRadius: "10px", height: "45rem" }}
           />
         </div>
       </Dialog>
