@@ -2,3 +2,25 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.image-dialog {
+  border-radius: 0.625rem;
+  height: 45rem;
+}
+
+@media (max-width: 480px) {
+  .image-dialog {
+    border-radius: 0.625rem;
+    height: 30rem;
+  }
+}
+
+.image-tile {
+  height: 21.75rem !important;
+}
+
+@media (max-width: 480px) {
+  .image-tile {
+    height: 8rem !important;
+  }
+}

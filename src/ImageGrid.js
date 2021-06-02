@@ -114,7 +114,7 @@ export default function ImageGrid(props) {
     const tempArr = tileData
       .slice((page - 1) * ITEMS_PER_SCROLL, page * ITEMS_PER_SCROLL)
       .map((tile, index) => (
-        <GridListTile key={imageArr.length + index} style={{ height: "350px" }}>
+        <GridListTile key={imageArr.length + index} className="image-tile">
           <img
             src={tile.download_url}
             alt={tile.author}
@@ -155,7 +155,6 @@ export default function ImageGrid(props) {
         maxWidth="lg"
         scroll={"body"}
         PaperComponent={"div"}
-        classes={{root: classes.dialog}}
       >
         <div>
           <IconButton
@@ -182,7 +181,7 @@ export default function ImageGrid(props) {
           <img
             src={selectedImage.download_url}
             alt={selectedImage.id}
-            style={{ borderRadius: "10px", height: "45rem" }}
+            class="image-dialog"
           />
         </div>
       </Dialog>
