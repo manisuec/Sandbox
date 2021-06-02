@@ -8,7 +8,7 @@
   height: 45rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .image-dialog {
     border-radius: 0.625rem;
     height: 30rem;
@@ -19,7 +19,7 @@
   height: 21.75rem !important;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .image-tile {
     height: 8rem !important;
   }

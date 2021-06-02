@@ -181,7 +181,7 @@ export default function ImageGrid(props) {
           <img
             src={selectedImage.download_url}
             alt={selectedImage.id}
-            class="image-dialog"
+            className="image-dialog"
           />
         </div>
       </Dialog>
